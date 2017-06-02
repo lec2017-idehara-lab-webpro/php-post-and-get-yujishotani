@@ -8,7 +8,7 @@ hello.php、index.php を書き換え、index.php で入力した名前と学籍
 
 ## 送信側
 
-<FORM> 中に入力用コントロールエレメントを記述する：
+FORM 中に入力用コントロールエレメントを記述する：
 
 ```
 	<FORM ACTION="uri" METHOD="method">
@@ -16,19 +16,19 @@ hello.php、index.php を書き換え、index.php で入力した名前と学籍
 	</FORM>
 ```
 
-		uri : 	入力データの送信先。相対指定するのが普通
-		method : 	GET または POST
+uri : 	入力データの送信先。相対指定するのが普通
+method : 	GET または POST
 
-	<FORM> 中の入力コントロール
-		<INPUT TYPE=type NAME=name VALUE=value>
-			他に、<TEXTAREA> <SELECT> <BUTTON>
-			VALUE は省略可能
-		よく使われる type　
-			text|password|radio|checkbox|hidden|submit|reset
-		ボタン以外のコントロールの name と value のペアが送信される
+```<FORM>``` 中の入力コントロール
+```<INPUT TYPE=type NAME=name VALUE=value>```
+他に、```<TEXTAREA> <SELECT> <BUTTON>``` などがある。VALUE は省略可能
 
-	例：　form.html
-  ```
+よく使われる type：
+```text|password|radio|checkbox|hidden|submit|reset```
+ボタン以外のコントロールの name と value のペアが送信される
+
+例：　form.html
+```
 	<BODY>
 		<H1>FORM テスト</H1>
 		<FORM ACTION="get.php" METHOD="GET">
@@ -49,7 +49,9 @@ hello.php、index.php を書き換え、index.php で入力した名前と学籍
  ```
 
 ## PHP での変数の受け取り
-フォームデータを送信された PHP ファイルでは、メソッドに応じて ```$_GET, $_POST``` 配列にデータが格納されている。各配列のキーが name に、値が value に相当する。isset 関数に複数の引数を渡すことで「すべての引数が定義されているかどうか」をチェックすることができる。フォームデータから送信される GET/POST 配列には、「空文字列」が入っているので、「文字列長」でチェックする。
+フォームデータを送信された PHP ファイルでは、メソッドに応じて ```$_GET, $_POST``` 配列にデータが格納されている。各配列のキーが name に、値が value に相当する。isset 関数に複数の引数を渡すことで「すべての引数が定義されているかどうか」をチェックすることができる。
+
+フォームデータから送信される GET/POST 配列には、値が入力されていない場合、「空文字列が入って定義されている」ので、「文字列長」でチェックする。
 
 例：　get.php
 ```
